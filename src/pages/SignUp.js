@@ -1,12 +1,34 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
+import axios from "axios";
 
 function SignUp() {
+    // - [x] Installeer axios
+    // - [X] Importeer axios
+    // - [X] Maak een asynchrone functie
+    // - [X] Maak een try / catch blok
+    // - [X] In de try: maak een POST request naar het eindpoint: http://localhost:3000/register
+    //     - [ ] Een POST request krijgt altijd de url en het data object mee (in dit geval minimaal email en wachtwoord)
+    // - [ ] Laat de gebruiker weten dat het registeren is gelukt
+    // - [ ] Stuur de gebruiker na twee seconden door naar het inlog-formulier
+    // - [ ] Puntjes op de i: error en laad-tijden implemententeren
+
     const { handleSubmit, register } = useForm();
 
-    function onSubmit(data) {
-        console.log(data);
+    async function onSubmit(data) {
+        console.log("DATA VAN DE GEBRUIKER", data);
+        try {
+            const response = await axios.post("http://localhost:3000/register", {
+                email: data.email,
+                username: data.username,
+                password: data.password,
+            });
+            console.log(response);
+
+        }catch (error){
+            console.log("OH NO", error)
+        }
     }
 
     return (
