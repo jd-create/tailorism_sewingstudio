@@ -70,3 +70,7 @@ section  {
     transform: rotate(360deg);
   }
 }
+
+p.successmessage {
+  color: green;
+}

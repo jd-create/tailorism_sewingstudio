@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import { Link } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import axios from "axios";
+import { useHistory } from "react-router-dom";
 
 function SignUp() {
     // - [x] Installeer axios
@@ -10,14 +11,16 @@ function SignUp() {
     // - [X] Maak een try / catch blok
     // - [X] In de try: maak een POST request naar het eindpoint: http://localhost:3000/register
     //     - [ ] Een POST request krijgt altijd de url en het data object mee (in dit geval minimaal email en wachtwoord)
-    // - [ ] Laat de gebruiker weten dat het registeren is gelukt
-    // - [ ] Stuur de gebruiker na twee seconden door naar het inlog-formulier
-    // - [ ] Puntjes op de i: error en laad-tijden implemententeren
-
+    // - [X] Laat de gebruiker weten dat het registeren is gelukt
+    // - [x] Stuur de gebruiker na twee seconden door naar het inlog-formulier
+    // - [X] Puntjes op de i: error en laad-tijden implemententeren
+    const history = useHistory();
     const {handleSubmit, register} = useForm();
-    const [succesMessage, setSuccesMessage] = useState("");
+    const [successMessage, setSuccessMessage] = useState("");
+    const [error, setError] = useState("")
 
     async function onSubmit(data) {
+        setError('');
         console.log("DATA VAN DE GEBRUIKER", data);
         try {
             const response = await axios.post("http://localhost:3000/register", {
@@ -26,20 +29,21 @@ function SignUp() {
                 password: data.password,
             });
             console.log(response);
-            setSuccesMessage("Registreren is gelukt!")
-
-        } catch (error) {
-            console.log("OH NO", error)
+            setSuccessMessage("Registreren is gelukt. Je wordt nu doorgestuurd naar de loginpagina.");
+            setTimeout(() => history.push("/signin"), 2000);
+        } catch (e) {
+            console.error(e);
+            setError(`Het registreren is mislukt. Probeer het opnieuw (${e.message})`);
         }
     }
 
     return (
         <>
-            <p>{succesMessage}</p>
+            <p className='successmessage'>{successMessage}</p>
             <h1>Registreren</h1>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab alias cum debitis dolor dolore fuga id
                 molestias qui quo unde?</p>
-            {succesMessage && <form onSubmit={handleSubmit(onSubmit)}>
+            {!successMessage && <form onSubmit={handleSubmit(onSubmit)}>
                 <label htmlFor="email-field">
                     Email:
                     <input
@@ -75,6 +79,7 @@ function SignUp() {
                 >
                     Maak account aan
                 </button>
+                {error && <p className="error-message">{error}</p>}
             </form>}
             <p>Heb je al een account? Je kunt je <Link to="/signin">hier</Link> inloggen.</p>
         </>
