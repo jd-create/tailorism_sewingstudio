@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { Link } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import axios from "axios";
@@ -14,7 +14,8 @@ function SignUp() {
     // - [ ] Stuur de gebruiker na twee seconden door naar het inlog-formulier
     // - [ ] Puntjes op de i: error en laad-tijden implemententeren
 
-    const { handleSubmit, register } = useForm();
+    const {handleSubmit, register} = useForm();
+    const [succesMessage, setSuccesMessage] = useState("");
 
     async function onSubmit(data) {
         console.log("DATA VAN DE GEBRUIKER", data);
@@ -25,17 +26,20 @@ function SignUp() {
                 password: data.password,
             });
             console.log(response);
+            setSuccesMessage("Registreren is gelukt!")
 
-        }catch (error){
+        } catch (error) {
             console.log("OH NO", error)
         }
     }
 
     return (
         <>
+            <p>{succesMessage}</p>
             <h1>Registreren</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab alias cum debitis dolor dolore fuga id molestias qui quo unde?</p>
-            <form onSubmit={handleSubmit(onSubmit)}>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab alias cum debitis dolor dolore fuga id
+                molestias qui quo unde?</p>
+            {succesMessage && <form onSubmit={handleSubmit(onSubmit)}>
                 <label htmlFor="email-field">
                     Email:
                     <input
@@ -71,7 +75,7 @@ function SignUp() {
                 >
                     Maak account aan
                 </button>
-            </form>
+            </form>}
             <p>Heb je al een account? Je kunt je <Link to="/signin">hier</Link> inloggen.</p>
         </>
     );
