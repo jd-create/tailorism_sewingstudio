@@ -15,12 +15,14 @@ function SignUp() {
     // - [x] Stuur de gebruiker na twee seconden door naar het inlog-formulier
     // - [X] Puntjes op de i: error en laad-tijden implemententeren
     const history = useHistory();
+    const [loading, toggleLoading] = useState(false);
     const {handleSubmit, register} = useForm();
     const [successMessage, setSuccessMessage] = useState("");
     const [error, setError] = useState("")
 
     async function onSubmit(data) {
         setError('');
+        toggleLoading(true);
         console.log("DATA VAN DE GEBRUIKER", data);
         try {
             const response = await axios.post("http://localhost:3000/register", {
@@ -35,6 +37,7 @@ function SignUp() {
             console.error(e);
             setError(`Het registreren is mislukt. Probeer het opnieuw (${e.message})`);
         }
+        toggleLoading(false);
     }
 
     return (
@@ -76,8 +79,9 @@ function SignUp() {
                 <button
                     type="submit"
                     className="form-button"
+                    disabled={loading}
                 >
-                    Maak account aan
+                    {loading ? 'Versturen...' : 'Maak account aan'}
                 </button>
                 {error && <p className="error-message">{error}</p>}
             </form>}
