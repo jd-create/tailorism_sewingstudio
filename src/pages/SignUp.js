@@ -10,10 +10,11 @@ function SignUp() {
     // - [X] Maak een asynchrone functie
     // - [X] Maak een try / catch blok
     // - [X] In de try: maak een POST request naar het eindpoint: http://localhost:3000/register
-    //     - [ ] Een POST request krijgt altijd de url en het data object mee (in dit geval minimaal email en wachtwoord)
+    //     - [x] Een POST request krijgt altijd de url en het data object mee (in dit geval minimaal email en wachtwoord)
     // - [X] Laat de gebruiker weten dat het registeren is gelukt
     // - [x] Stuur de gebruiker na twee seconden door naar het inlog-formulier
     // - [X] Puntjes op de i: error en laad-tijden implemententeren
+
     const history = useHistory();
     const [loading, toggleLoading] = useState(false);
     const {handleSubmit, register} = useForm();
