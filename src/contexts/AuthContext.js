@@ -28,7 +28,8 @@ function AuthContextProvider(props){
         setTimeout (() => setAuthState({user: null, status: "done"}),2000);
     }, [])
 
-    function login(){
+    function login(token){
+        console.log("WILL THERE BE:",token);
         //TODO: functie login vullen
       setAuthState({});
     }
