@@ -1,4 +1,5 @@
 import { createContext, useState, useEffect} from "react";
+import jwtDecode from "jwt-decode";
 
 export const authContext = createContext({});
 
@@ -33,10 +34,10 @@ function AuthContextProvider(props){
     function login(token){
         // - [x] Zorg ervoor dat de inlogfunctie uit de context de JWT token kan ontvangen
 // - [x] Zet de token in de local storage
-// - [ ] Haal alle belangrijke informatie uit de token (dit is voor iedere situatie anders! Sommige backends sturen direct de gebruikersdata mee terug!)
-// - [ ] Installeer jwt-decode
-// - [ ] Importeer jwt-decode
-// - [ ] Decode de token en en haal de user id eruit (die hebben we in ons geval nodig voor de gebruikersdata)
+// - [x] Haal alle belangrijke informatie uit de token (dit is voor iedere situatie anders! Sommige backends sturen direct de gebruikersdata mee terug!)
+// - [x] Installeer jwt-decode
+// - [x] Importeer jwt-decode
+// - [x] Decode de token en en haal de user id eruit (die hebben we in ons geval nodig voor de gebruikersdata)
 // -  [ ] Haal de gebruikersgegevens op
 // - [ ] Importeer axios
 // - [ ] Maak een aparte asynchrone functie (deze hebben we straks vaker nodig!)
@@ -46,7 +47,9 @@ function AuthContextProvider(props){
 //     - [ ] De data die we terugkrijgen zetten we in de state, en daarmee ook in de context (user: al die data en status: 'done')
 // - [ ] Link gebruiker door naar de profielpagina
         localStorage.setItem('token', token)
-        console.log("WILL THERE BE:",token);
+        const dataFromToken = jwtDecode(token);
+        console.log("DATA FROM TOKEN: ", dataFromToken.sub)
+        // console.log("WILL THERE BE:",token);
         //TODO: functie login vullen
       setAuthState({});
     }
