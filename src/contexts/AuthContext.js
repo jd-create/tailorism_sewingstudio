@@ -47,7 +47,7 @@ function AuthContextProvider(props) {
         setTimeout(() => setAuthState({user: null, status: "done"}), 2000);
     }, [])
 
-    async function getUserData(id) {
+    async function getUserData(id, token) {
         setAuthState({user: null, status: "pending"});
         const token = localStorage.getItem('token')
         try {
@@ -88,7 +88,8 @@ function AuthContextProvider(props) {
         //TODO: functie login vullen
 
         setAuthState({});
-        const userData = await getUserData(dataFromToken.sub);
+        const userId = dataFromToken.sub
+        const userData = await getUserData(userId, token);
     }
 
     function logout() {
