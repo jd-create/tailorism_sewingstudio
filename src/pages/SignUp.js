@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
-import { Link } from 'react-router-dom';
-import { useForm } from 'react-hook-form';
+import {Link} from 'react-router-dom';
+import {useForm} from 'react-hook-form';
 import axios from "axios";
-import { useHistory } from "react-router-dom";
+import {useHistory} from "react-router-dom";
 
 function SignUp() {
     // - [x] Installeer axios

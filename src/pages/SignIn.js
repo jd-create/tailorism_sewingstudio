@@ -1,9 +1,9 @@
-import React, { useContext,useState } from 'react';
-import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import React, {useContext, useState} from 'react';
+import {useForm} from 'react-hook-form';
+import {Link} from 'react-router-dom';
 import axios from "axios";
-import { authContext } from "../contexts/AuthContext";
-import { useHistory } from "react-router-dom";
+import {authContext} from "../contexts/AuthContext";
+
 
 // - [x] Importeer axios
 // - [x] Maak een asynchrone functie
@@ -19,11 +19,10 @@ import { useHistory } from "react-router-dom";
 // - Puntjes op de i: error en laad-tijden inplemententeren (maar dit kun je inmiddels zelf!)
 
 function SignIn() {
-    const { login } = useContext(authContext);
+    const {login} = useContext(authContext);
     const [loading, toggleLoading] = useState(false);
-    const { handleSubmit, register } = useForm();
+    const {handleSubmit, register} = useForm();
     // console.log('WAT ZIT IN AUTHDATA:',login);
-    const history = useHistory();
     const [error, setError] = useState("")
 
     async function onSubmit(data) {
@@ -38,9 +37,8 @@ function SignIn() {
             // console.log("TOKEN?",response.data.accessToken);
             //roep login aan met de token, zo kunnen we hem doorgeven naar de context
             login(response.data.accessToken);
-            setTimeout(() => history.push("/profile"), 2000);
-        }   catch (e) {
-            console.log('Oh no', e );
+        } catch (e) {
+            console.log('Oh no', e);
             setError(`Het inloggen is mislukt. Probeer het opnieuw (${e.message})`);
 
         }
@@ -50,7 +48,8 @@ function SignIn() {
     return (
         <>
             <h1>Inloggen</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab alias cum debitis dolor dolore fuga id molestias qui quo unde?</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab alias cum debitis dolor dolore fuga id
+                molestias qui quo unde?</p>
 
             <form onSubmit={handleSubmit(onSubmit)}>
                 <label htmlFor="email-field">

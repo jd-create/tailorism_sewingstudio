@@ -1,6 +1,8 @@
-import { createContext, useState, useEffect} from "react";
+import {createContext, useState, useEffect} from "react";
 import jwtDecode from "jwt-decode";
+import {useHistory} from 'react-router-dom'
 import axios from "axios";
+
 export const authContext = createContext({});
 
 
@@ -21,26 +23,41 @@ export const authContext = createContext({});
 // - [x] Zorg ervoor dat we alleen de applicatie (dus de children) laten zien als de status op 'done' staat
 // - [x] Plaats de state en lege functies in het data object
 
+// - [x] Zorg ervoor dat de inlogfunctie uit de context de JWT token kan ontvangen
+// - [x] Zet de token in de local storage
+// - [x] Haal alle belangrijke informatie uit de token (dit is voor iedere situatie anders! Sommige backends sturen direct de gebruikersdata mee terug!)
+// - [x] Installeer jwt-decode
+// - [x] Importeer jwt-decode
+// - [x] Decode de token en en haal de user id eruit (die hebben we in ons geval nodig voor de gebruikersdata)
+// -  [ ] Haal de gebruikersgegevens op
+// - [x] Importeer axios
+// - [x] Maak een aparte asynchrone functie (deze hebben we straks vaker nodig!)
+// - [x] Roep die functie aan vanuit de login functie
+// - [x] Maak een try / catch blok
+// - [x] In de try: maak een axios GET request naar het eindpoint http://localhost:3000/600/users/${id} en stuur de token mee
+//     - [x] De data die we terugkrijgen zetten we in de state, en daarmee ook in de context (user: al die data en status: 'done')
+// - [x] Link gebruiker door naar de profielpagina
 
-
-function AuthContextProvider(props){
+function AuthContextProvider(props) {
+    const history = useHistory();
     const [authState, setAuthState] = useState({user: null, status: "pending"});
 
     useEffect(() => {
-    // TODO we proberen automatisch in te loggen wanneer we nog een token hebben
-        setTimeout (() => setAuthState({user: null, status: "done"}),2000);
+        // TODO we proberen automatisch in te loggen wanneer we nog een token hebben
+        setTimeout(() => setAuthState({user: null, status: "done"}), 2000);
     }, [])
 
     async function getUserData(id) {
-        setAuthState({ user: null, status: "pending"});
+        setAuthState({user: null, status: "pending"});
         const token = localStorage.getItem('token')
         try {
             const response = await axios.get(`http://localhost:3000/600/users/${id}`, {
-               headers: {
-                   Authorization: `Bearer ${token}`
-               }
-           });
-            setAuthState({  user: response.data, status: "done"});
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            });
+            setAuthState({user: response.data, status: "done"});
+            history.push('/profile')
             // Authorized POST request
             // const response2 = await axios.post(
             //     "http://localhost:3000/600/users",
@@ -56,44 +73,30 @@ function AuthContextProvider(props){
             // );
             // console.log("USER DATA, POST", response2);
 
-            console.log("USER DATA, GET:",response);
+            console.log("USER DATA, GET:", response);
 
-        } catch (e) {}
+        } catch (e) {
+        }
     }
 
-   async function login(token){
-        // - [x] Zorg ervoor dat de inlogfunctie uit de context de JWT token kan ontvangen
-// - [x] Zet de token in de local storage
-// - [x] Haal alle belangrijke informatie uit de token (dit is voor iedere situatie anders! Sommige backends sturen direct de gebruikersdata mee terug!)
-// - [x] Installeer jwt-decode
-// - [x] Importeer jwt-decode
-// - [x] Decode de token en en haal de user id eruit (die hebben we in ons geval nodig voor de gebruikersdata)
-// -  [ ] Haal de gebruikersgegevens op
-// - [x] Importeer axios
-// - [x] Maak een aparte asynchrone functie (deze hebben we straks vaker nodig!)
-// - [x] Roep die functie aan vanuit de login functie
-// - [x] Maak een try / catch blok
-// - [x] In de try: maak een axios GET request naar het eindpoint http://localhost:3000/600/users/${id} en stuur de token mee
-//     - [x] De data die we terugkrijgen zetten we in de state, en daarmee ook in de context (user: al die data en status: 'done')
-// - [x] Link gebruiker door naar de profielpagina
-       localStorage.setItem('token', token)
-       const dataFromToken = jwtDecode(token);
-       console.log("DATA FROM TOKEN: ", dataFromToken.sub)
-       // console.log("WILL THERE BE:",token);
-       //TODO: functie login vullen
+    async function login(token) {
 
-       setAuthState({});
-       const userData = await getUserData(dataFromToken.sub);
+        localStorage.setItem('token', token)
+        const dataFromToken = jwtDecode(token);
+        console.log("DATA FROM TOKEN: ", dataFromToken.sub)
+        // console.log("WILL THERE BE:",token);
+        //TODO: functie login vullen
+
+        setAuthState({});
+        const userData = await getUserData(dataFromToken.sub);
     }
 
-    function logout(){
+    function logout() {
         //TODO: functie logout vullen
     }
 
-
-
     //deze data maken we beschikbaar in de context
-    const data = { authState: authState, login: login, logout: logout }
+    const data = {authState: authState, login: login, logout: logout}
 
     return <authContext.Provider value={data}>
         {/*hier komt de rest van de app*/}
