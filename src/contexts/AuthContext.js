@@ -47,17 +47,22 @@ function AuthContextProvider(props) {
         setTimeout(() => setAuthState({user: null, status: "done"}), 2000);
     }, [])
 
-    async function getUserData(id, token) {
+    async function getUserData(id,token) {
         setAuthState({user: null, status: "pending"});
-        const token = localStorage.getItem('token')
+
         try {
-            const response = await axios.get(`http://localhost:3000/600/users/${id}`, {
-                headers: {
-                    Authorization: `Bearer ${token}`
-                }
-            });
+            const response = await axios.get(
+                `http://localhost:3000/600/users/${id}`,
+                {
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                    },
+
+            }
+            );
+            // console.log("USER DATA, GET:", response);
             setAuthState({user: response.data, status: "done"});
-            history.push('/profile')
+            history.push('/profile');
             // Authorized POST request
             // const response2 = await axios.post(
             //     "http://localhost:3000/600/users",
@@ -73,23 +78,22 @@ function AuthContextProvider(props) {
             // );
             // console.log("USER DATA, POST", response2);
 
-            console.log("USER DATA, GET:", response);
 
-        } catch (e) {
-        }
+
+        } catch (e) { }
     }
 
     async function login(token) {
 
         localStorage.setItem('token', token)
         const dataFromToken = jwtDecode(token);
-        console.log("DATA FROM TOKEN: ", dataFromToken.sub)
+        console.log("WHAT IS IN THIS TOKEN THING: ", dataFromToken.sub)
         // console.log("WILL THERE BE:",token);
         //TODO: functie login vullen
-
-        setAuthState({});
+        // setAuthState({});
         const userId = dataFromToken.sub
-        const userData = await getUserData(userId, token);
+
+        await getUserData(userId, token);
     }
 
     function logout() {
