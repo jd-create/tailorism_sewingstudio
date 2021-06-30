@@ -30,6 +30,7 @@ function SignUp() {
                 email: data.email,
                 username: data.username,
                 password: data.password,
+                // address: "Beeklaan 2, 5055xy Appeldorp"
             });
             console.log(response);
             setSuccessMessage("Registreren is gelukt. Je wordt nu doorgestuurd naar de loginpagina.");
