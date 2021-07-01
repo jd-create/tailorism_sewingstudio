@@ -28,10 +28,14 @@ function Profile() {
         authInfo = useContext(authContext);
     console.log("USER STUFF IN PROFILE:",authInfo.authState.user)
     const [content, setContent]= useState(null);
+    const [error, setError]= useState(null);
+    //laadtijden implementeren lukt niet; veroorzaakt teveel rerendering
+    // const [loading, toggleLoading] = useState(false);
 
 
     useEffect(() => {
         async function fetchPrivateContent(){
+            // toggleLoading(true);
             console.log("FETCH DATA IN PROFILE")
             try {
                 const token = localStorage.getItem('token')
@@ -42,13 +46,16 @@ function Profile() {
                 console.log("DO WE GET A RESPONSE:", response)
                 setContent(response.data);
                     }
-                    catch (e) {}
+                    //onderstaande error krijg ik niet getest, nuttig?
+                    catch (e) {setError(`Ophalen beveiligde data mislukt. Probeer het opnieuw. (${e.message})`);}
+                // toggleLoading(false);
                 };
 
 
         fetchPrivateContent();
     }, [])
         console.log("WHAT IS CONTENT??:",content)
+        // toggleLoading(false);
 
     return (
         <>

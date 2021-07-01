@@ -40,7 +40,6 @@ function SignIn() {
         } catch (e) {
             console.log('Oh no', e);
             setError(`Het inloggen is mislukt. Probeer het opnieuw (${e.message})`);
-
         }
         toggleLoading(false);
     }
