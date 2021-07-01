@@ -1,7 +1,7 @@
 import React, {useContext, useState, useEffect} from 'react';
 import {Link} from 'react-router-dom';
 import {authContext} from '../contexts/AuthContext'
-
+import axios from "axios";
 
 // - [x] Importeeer de useContext functie en AuthContext
 // - [x] Destucture daar het user object uit
@@ -12,11 +12,11 @@ import {authContext} from '../contexts/AuthContext'
 // - [x] De data moet worden opgehaald zodra de pagina geladen is, dus hier hebben we useEffect voor nodig:
 //     - [x] Importeer useEffect
 // - [x] Schrijf de useEffect functie en geef de lege dependency array mee
-// - [ ] Om data op te halen hebben we een asynchrone functie nodig, dus:
-// - [ ] Importeer axios
-// - [] Maak een asynchrone functie in de useEffect en roep hem ook direct aan
-// - [ ] Maak een try / catch blok
-// - [ ] Om beschermde data op te halen hebben we de token nodig! Haal 'm uit de local storage
+// - [x] Om data op te halen hebben we een asynchrone functie nodig, dus:
+// - [x] Importeer axios
+// - [x] Maak een asynchrone functie in de useEffect en roep hem ook direct aan
+// - [x] Maak een try / catch blok
+// - [X] Om beschermde data op te halen hebben we de token nodig! Haal 'm uit de local storage
 // - [ ] In de try: maak een GET request naar het beveiligde eindpoint: http://localhost:3000/660/private-content
 //     - [ ] Een GET request krijgt altijd de url en het config object mee (waarin je request headers - de token! - meegeeft)
 // - [ ] Bekijk de response. Als het succesvol was, plaats dan de response in de state
@@ -24,12 +24,28 @@ import {authContext} from '../contexts/AuthContext'
 // - Puntjes op de i: error en laad-tijden inplemententeren (maar dit kun je inmiddels zelf!)
 
 function Profile() {
-    const authInfo = useContext(authContext);
-    console.log("WHAT'S IN PROFILE:",authInfo.authState.user)
+    const
+        authInfo = useContext(authContext);
+    console.log("USER STUFF IN PROFILE:",authInfo.authState.user)
 
     useEffect(() => {
-        console.log("FETCH DATA IN PROFILE")
+        async function fetchPrivateContent(){
+            console.log("FETCH DATA IN PROFILE")
+            try {
+                const token = localStorage.getItem('token')
+                console.log("TOKEN UIT LOCAL STORAGE:", token)
+                const response = await axios.get(
+                    `http://localhost:3000/660/private-content`,{headers: {Authorization: `Bearer ${token}`},}
+                )
+                console.log("DO WE GET A RESPONSE:", response)
+                    }
+                    catch (e) {}
+                };
+
+
+        fetchPrivateContent();
     }, [])
+
 
     return (
         <>
