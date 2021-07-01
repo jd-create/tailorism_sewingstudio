@@ -38,13 +38,36 @@ export const authContext = createContext({});
 //     - [x] De data die we terugkrijgen zetten we in de state, en daarmee ook in de context (user: al die data en status: 'done')
 // - [x] Link gebruiker door naar de profielpagina
 
+// - [ ] Om de data straks ergens op te slaan hebben we state nodig, dus maak een een stukje state aan
+// - [ ] De data moet worden opgehaald zodra de pagina geladen is, dus hier hebben we useEffect voor nodig:
+//     - [ ] Importeer useEffect
+// - [ ] Schrijf de useEffect functie en geef de lege dependency array mee
+// - [ ] Om data op te halen hebben we een asynchrone functie nodig, dus:
+// - [ ] Importeer axios
+// - [ ] Maak een asynchrone functie in de useEffect en roep hem ook direct aan
+// - [ ] Maak een try / catch blok
+// - [ ] Om beschermde data op te halen hebben we de token nodig! Haal 'm uit de local storage
+// - [ ] In de try: maak een GET request naar het beveiligde eindpoint: http://localhost:3000/660/private-content
+//     - [ ] Een GET request krijgt altijd de url en het config object mee (waarin je request headers - de token! - meegeeft)
+// - [ ] Bekijk de response. Als het succesvol was, plaats dan de response in de state
+// - [ ] Geef de data weer op de pagina (inclusief impliciete check!)
+// - Puntjes op de i: error en laad-tijden inplemententeren (maar dit kun je inmiddels zelf!)
+
 function AuthContextProvider(props) {
     const history = useHistory();
     const [authState, setAuthState] = useState({user: null, status: "pending"});
 
     useEffect(() => {
         // TODO we proberen automatisch in te loggen wanneer we nog een token hebben
-        setTimeout(() => setAuthState({user: null, status: "done"}), 2000);
+        // setTimeout(() => setAuthState({user: null, status: "done"}), 2000);
+        const token = localStorage.getItem('token');
+        if(token){
+        login(token);
+        } else {
+            setAuthState({user: null, status: "done"});
+            history.push('/signin')
+        }
+
     }, [])
 
     async function getUserData(id,token) {
@@ -85,13 +108,13 @@ function AuthContextProvider(props) {
 
     async function login(token) {
 
-        localStorage.setItem('token', token)
+        localStorage.setItem('token', token);
         const dataFromToken = jwtDecode(token);
-        console.log("WHAT IS IN THIS TOKEN THING: ", dataFromToken.sub)
+        console.log("WHAT IS IN THIS TOKEN THING: ", dataFromToken.sub);
         // console.log("WILL THERE BE:",token);
         //TODO: functie login vullen
         // setAuthState({});
-        const userId = dataFromToken.sub
+        const userId = dataFromToken.sub;
 
         await getUserData(userId, token);
     }
