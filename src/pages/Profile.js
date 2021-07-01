@@ -24,11 +24,11 @@ import axios from "axios";
 // - Puntjes op de i: error en laad-tijden inplemententeren (maar dit kun je inmiddels zelf!)
 
 function Profile() {
-    const
-        authInfo = useContext(authContext);
-    console.log("USER STUFF IN PROFILE:",authInfo.authState.user)
+    const { authState: {user},
+    } = useContext(authContext);
+    console.log("USER STUFF IN PROFILE:", user)
     const [content, setContent]= useState(null);
-    const [error, setError]= useState(null);
+    // const [error, setError]= useState(null);
     //laadtijden implementeren lukt niet; veroorzaakt teveel rerendering
     // const [loading, toggleLoading] = useState(false);
 
@@ -41,19 +41,23 @@ function Profile() {
                 const token = localStorage.getItem('token')
                 console.log("TOKEN UIT LOCAL STORAGE:", token)
                 const response = await axios.get(
-                    `http://localhost:3000/660/private-content`,{headers: {Authorization: `Bearer ${token}`},}
-                )
+                    `http://localhost:3000/660/private-content`,
+                    {headers:
+                            {Authorization: `Bearer ${token}`,
+                            },
+                    }
+                );
                 console.log("DO WE GET A RESPONSE:", response)
                 setContent(response.data);
                     }
                     //onderstaande error krijg ik niet getest, nuttig?
-                    catch (e) {setError(`Ophalen beveiligde data mislukt. Probeer het opnieuw. (${e.message})`);}
+                    catch (e) {}
                 // toggleLoading(false);
-                };
+                }
 
 
         fetchPrivateContent();
-    }, [])
+    }, []);
         console.log("WHAT IS CONTENT??:",content)
         // toggleLoading(false);
 
@@ -63,8 +67,12 @@ function Profile() {
             <section>
                 <h2>Gegevens</h2>
                 {/*{//het vraagteken hieronder houdt een extra check in of de user wel gevuld is (niet null), optional chaining operator}*/}
-                <p><strong>Gebruikersnaam:</strong> {authInfo.authState.user?.username}</p>
-                <p><strong>Email:</strong> {authInfo.authState.user?.email}</p>
+                <p>
+                    <strong>Gebruikersnaam:</strong> {user && user.username}
+                </p>
+                <p>
+                    <strong>Email:</strong> {user?.email}
+                </p>
             </section>
             <section>
                 <h2>{content?.title}</h2>

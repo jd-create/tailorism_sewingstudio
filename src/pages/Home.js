@@ -3,10 +3,8 @@ import { Link } from 'react-router-dom';
 import { authContext } from "../contexts/AuthContext";
 
 function Home() {
-    // const authData =
-        useContext(authContext);
+    const authData = useContext(authContext);
     // console.log("WHAT IS IN THIS DATA?" ,authData);
-
     return (
         <>
             <h1>Homepagina</h1>
@@ -15,9 +13,13 @@ function Home() {
                     qui quo unde?</p>
             </section>
             <section>
-                <p>Als je ingelogd bent, bekijk dan de <Link to="/profile">Profielpagina</Link></p>
-                <p>Je kunt ook <Link to="/signin">inloggen</Link> of jezelf <Link to="/signup">registeren</Link> als je nog geen
-                    account hebt.</p>
+                <p>
+                    Als je ingelogd bent, bekijk dan de{""} <Link to="/profile">Profielpagina</Link>
+                </p>
+                <p>
+                    Je kunt ook <Link to="/signin">inloggen</Link> of jezelf {""}
+                    <Link to="/signup">registeren</Link> als je nog geen account hebt.
+                </p>
             </section>
         </>
     );

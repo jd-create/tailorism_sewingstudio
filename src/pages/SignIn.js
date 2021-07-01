@@ -30,7 +30,7 @@ function SignIn() {
         toggleLoading(true);
         try {
             // console.log("DATA UIT FORMULIER??", data);
-            const response = await axios.post("http://localhost:3000/signin", {
+            const response = await axios.post("http://localhost:3000/login", {
                 email: data.email,
                 password: data.password,
             });
@@ -47,8 +47,10 @@ function SignIn() {
     return (
         <>
             <h1>Inloggen</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab alias cum debitis dolor dolore fuga id
-                molestias qui quo unde?</p>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab alias cum debitis dolor dolore fuga id
+                molestias qui quo unde?
+            </p>
 
             <form onSubmit={handleSubmit(onSubmit)}>
                 <label htmlFor="email-field">
@@ -70,16 +72,16 @@ function SignIn() {
                         {...register("password")}
                     />
                 </label>
-                <button
-                    type="submit"
-                    className="form-button"
-                    disabled={loading}
+                <button type="submit" className="form-button"
+                        disabled={loading}
                 >
                     {loading ? "Versturen..." : "Inloggen"}
                 </button>
                 {error && <p className="error-message">{error}</p>}
             </form>
-            <p>Heb je nog geen account? <Link to="/signup">Registreer</Link> je dan eerst.</p>
+            <p>
+                Heb je nog geen account? <Link to="/signup">Registreer</Link> je dan eerst.
+            </p>
         </>
     );
 }

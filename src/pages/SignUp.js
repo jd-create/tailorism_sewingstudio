@@ -23,9 +23,10 @@ function SignUp() {
 
     async function onSubmit(data) {
         setError('');
-        toggleLoading(true);
+
         console.log("DATA VAN DE GEBRUIKER", data);
         try {
+            toggleLoading(true);
             const response = await axios.post("http://localhost:3000/register", {
                 email: data.email,
                 username: data.username,
@@ -44,11 +45,15 @@ function SignUp() {
 
     return (
         <>
-            <p className='successmessage'>{successMessage}</p>
             <h1>Registreren</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab alias cum debitis dolor dolore fuga id
-                molestias qui quo unde?</p>
-            {!successMessage && <form onSubmit={handleSubmit(onSubmit)}>
+            <p className='successmessage'>{successMessage}</p>
+            <p>{loading && "Moment geduld aub"}</p>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab alias cum debitis dolor dolore fuga id
+                molestias qui quo unde?
+            </p>
+            {!successMessage && (
+                <form onSubmit={handleSubmit(onSubmit)}>
                 <label htmlFor="email-field">
                     Email:
                     <input
@@ -78,16 +83,15 @@ function SignUp() {
                         {...register("password")}
                     />
                 </label>
-                <button
-                    type="submit"
-                    className="form-button"
-                    disabled={loading}
-                >
-                    {loading ? 'Versturen...' : 'Maak account aan'}
+                <button disabled={loading} type="submit" className="form-button">
+                    Maak account aan
                 </button>
                 {error && <p className="error-message">{error}</p>}
-            </form>}
-            <p>Heb je al een account? Je kunt je <Link to="/signin">hier</Link> inloggen.</p>
+            </form>
+            )}
+            <p>
+                Heb je al een account? Je kunt je <Link to="/signin">hier</Link>{" "} inloggen.
+            </p>
         </>
     );
 }
