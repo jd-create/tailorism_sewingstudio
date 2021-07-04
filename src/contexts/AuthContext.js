@@ -39,21 +39,20 @@ function AuthContextProvider(props) {
     //         history.push('/profile');
     //     } catch (e) {}
     // }
-
-    async function login() {
+    function login() {
 
     }
 
     //hieronder het origineel
     // async function login(token) {
-    //     localStorage.setItem('token', token);
-    //     const dataFromToken = jwtDecode(token);
+    //     // localStorage.setItem('token', token);
+    //     // const dataFromToken = jwtDecode(token);
     //     console.log("WHAT IS IN THIS TOKEN THING: ", dataFromToken.sub);
     //     const userId = dataFromToken.sub;
     //
     //     getUserData(userId, token);
     // }
-    //
+
 
     function logout() {
 

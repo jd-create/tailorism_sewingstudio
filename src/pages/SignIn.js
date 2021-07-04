@@ -6,28 +6,28 @@ import {authContext} from "../contexts/AuthContext";
 
 
 function SignIn() {
-    const alles = useContext(authContext);
-    // Hieronder het origineel (alleen regel 11)
-    // const {login} = useContext(authContext);
+    // const alles = useContext(authContext);
+    // // Hieronder het origineel (alleen regel 11)
+    const {login} = useContext(authContext);
     const [loading, toggleLoading] = useState(false);
     const {handleSubmit, register} = useForm();
-    console.log('WAT ZIT IN AUTHDATA:',alles);
-    //hieronder het origineel (alleen regel 15)
-    // console.log('WAT ZIT IN AUTHDATA:',login);
+    console.log('WAT ZIT IN AUTHDATA:',login);
+
     const [error, setError] = useState("")
 
     async function onSubmit(data) {
         setError('');
         toggleLoading(true);
         try {
-            // console.log("DATA UIT FORMULIER??", data);
-            const response = await axios.post("http://localhost:3000/login", {
-                email: data.email,
+            console.log("DATA UIT FORMULIER??", data);
+            const response = await axios.post("http://localhost:8080/api/auth/signin", {
+                username: data.username,
                 password: data.password,
             });
-            // console.log("TOKEN?",response.data.accessToken);
+            console.log("WHAT'S IN THIS RESPONSE:",response)
+            console.log("TOKEN?",response.data.accessToken);
             //roep login aan met de token, zo kunnen we hem doorgeven naar de context
-            // login(response.data.accessToken);
+            login(response.data.accessToken);
         } catch (e) {
             console.log('Oh no', e);
             setError(`Het inloggen is mislukt. Probeer het opnieuw (${e.message})`);
@@ -44,16 +44,24 @@ function SignIn() {
             </p>
 
             <form onSubmit={handleSubmit(onSubmit)}>
-                <label htmlFor="email-field">
-                    Emailadres:
+                {/*<label htmlFor="email-field">*/}
+                {/*    Emailadres:*/}
+                {/*    <input*/}
+                {/*        type="email"*/}
+                {/*        id="email-field"*/}
+                {/*        name="email"*/}
+                {/*        {...register("email")}*/}
+                {/*    />*/}
+                {/*</label>*/}
+                <label htmlFor="username-field">
+                    Gebruikersnaam:
                     <input
-                        type="email"
-                        id="email-field"
-                        name="email"
-                        {...register("email")}
+                        type="text"
+                        id="username-field"
+                        name="username"
+                        {...register("username")}
                     />
                 </label>
-
                 <label htmlFor="password-field">
                     Wachtwoord:
                     <input
