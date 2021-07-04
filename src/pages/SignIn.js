@@ -6,9 +6,13 @@ import {authContext} from "../contexts/AuthContext";
 
 
 function SignIn() {
+    const alles = useContext(authContext);
+    // Hieronder het origineel (alleen regel 11)
     // const {login} = useContext(authContext);
     const [loading, toggleLoading] = useState(false);
     const {handleSubmit, register} = useForm();
+    console.log('WAT ZIT IN AUTHDATA:',alles);
+    //hieronder het origineel (alleen regel 15)
     // console.log('WAT ZIT IN AUTHDATA:',login);
     const [error, setError] = useState("")
 

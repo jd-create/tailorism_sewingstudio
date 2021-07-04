@@ -10,17 +10,17 @@ function AuthContextProvider(props) {
     const history = useHistory();
     const [authState, setAuthState] = useState({user: null, status: "pending"});
 
-    // useEffect(() => {
-    //     // TODO we proberen automatisch in te loggen wanneer we nog een token hebben
-    //     // setTimeout(() => setAuthState({user: null, status: "done"}), 2000);
-    //     const token = localStorage.getItem('token');
-    //     if(token) {
-    //         login(token);
-    //     } else {
-    //         setAuthState({user: null, status: "done"});
-    //         history.push('/')
-    //         }
-    //     }, []);
+    useEffect(() => {
+        // TODO we proberen automatisch in te loggen wanneer we nog een token hebben
+        setTimeout(() => setAuthState({user: null, status: "done"}), 2000);
+        // const token = localStorage.getItem('token');
+        // if(token) {
+        //     login(token);
+        // } else {
+        //     setAuthState({user: null, status: "done"});
+        //     history.push('/')
+        //     }
+        }, []);
 
 
     // async function getUserData(id,token) {
@@ -40,6 +40,11 @@ function AuthContextProvider(props) {
     //     } catch (e) {}
     // }
 
+    async function login() {
+
+    }
+
+    //hieronder het origineel
     // async function login(token) {
     //     localStorage.setItem('token', token);
     //     const dataFromToken = jwtDecode(token);
@@ -49,6 +54,11 @@ function AuthContextProvider(props) {
     //     getUserData(userId, token);
     // }
     //
+
+    function logout() {
+
+    }
+    //Hieronder het origineel
     // function logout() {
     //     localStorage.removeItem('token');
     //     setAuthState({user: null, status: 'done'});
@@ -56,9 +66,8 @@ function AuthContextProvider(props) {
     // }
 
 //Hieronder het origineel:
-   // const data = {authState: authState, login: login, logout: logout};
-//Hieronder tijdelijke aanpassing om niet alles ineen te gebruiken
-    const data = {authState: authState};
+   const data = {authState: authState, login: login, logout: logout};
+
 
     return (<authContext.Provider value={data}>
         {/*hier komt de rest van de app*/}
