@@ -22,6 +22,22 @@ function AuthContextProvider(props) {
         //     }
         }, []);
 
+    async function getUserData(id,token) {
+        setAuthState({user: null, status: "pending"});
+        try {
+            // const response = await axios.get(
+            //     `http://localhost:3000/600/users/${id}`,
+            //     {
+            //         headers: {
+            //             Authorization: `Bearer ${token}`,
+            //         },
+            //     }
+            // );
+            //
+            // setAuthState({user: response.data, status: "done"});
+    //         history.push('/profile');
+        } catch (e) {}
+    }
 
     // async function getUserData(id,token) {
     //     setAuthState({user: null, status: "pending"});
@@ -39,9 +55,14 @@ function AuthContextProvider(props) {
     //         history.push('/profile');
     //     } catch (e) {}
     // }
-    function login(token) {
+    function login(token,id) {
         console.log("DO WE HAVE A TOKEN NAO", token);
+        console.log("DO WE HAVE THE CORRESPONDING ID",id)
         localStorage.setItem('token', token);
+        const dataFromToken = jwtDecode(token);
+            console.log("WHAT IS IN THIS TOKEN THING: ", dataFromToken);
+        // const userId = dataFromToken;
+        // console.log("USERID?:",userId)
     }
 
     //hieronder het origineel
