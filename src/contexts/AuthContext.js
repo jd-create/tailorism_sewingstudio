@@ -41,6 +41,7 @@ function AuthContextProvider(props) {
     // }
     function login(token) {
         console.log("DO WE HAVE A TOKEN NAO", token);
+        localStorage.setItem('token', token);
     }
 
     //hieronder het origineel
