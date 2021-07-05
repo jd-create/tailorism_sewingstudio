@@ -39,8 +39,8 @@ function AuthContextProvider(props) {
     //         history.push('/profile');
     //     } catch (e) {}
     // }
-    function login() {
-
+    function login(token) {
+        console.log("DO WE HAVE A TOKEN NAO", token);
     }
 
     //hieronder het origineel

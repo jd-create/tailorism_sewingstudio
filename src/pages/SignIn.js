@@ -6,12 +6,11 @@ import {authContext} from "../contexts/AuthContext";
 
 
 function SignIn() {
-    // const alles = useContext(authContext);
-    // // Hieronder het origineel (alleen regel 11)
+
     const {login} = useContext(authContext);
     const [loading, toggleLoading] = useState(false);
     const {handleSubmit, register} = useForm();
-    console.log('WAT ZIT IN AUTHDATA:',login);
+    console.log('WAT ZIT IN AUTHSTUFF:',login);
 
     const [error, setError] = useState("")
 
@@ -28,6 +27,7 @@ function SignIn() {
             console.log("TOKEN?",response.data.accessToken);
             //roep login aan met de token, zo kunnen we hem doorgeven naar de context
             login(response.data.accessToken);
+
         } catch (e) {
             console.log('Oh no', e);
             setError(`Het inloggen is mislukt. Probeer het opnieuw (${e.message})`);
