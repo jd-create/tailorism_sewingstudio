@@ -24,6 +24,7 @@ function SignIn() {
                 password: data.password,
             });
             console.log("WHAT'S IN THIS RESPONSE:",response)
+            console.log("")
             console.log("GET USER ID:", response.data.username)
 
             //roep login aan met de token, zo kunnen we hem doorgeven naar de context

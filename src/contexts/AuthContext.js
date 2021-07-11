@@ -23,14 +23,17 @@ function AuthContextProvider(props) {
         //     }
         }, []);
 
-    async function getUserData(username) {
+    async function getUserData(username,token) {
         setAuthState({user: null, status: "pending"});
         try {
+            console.log("username and token?",username, token)
             const response = await axios.get(
                 `http://localhost:8080/api/auth/600/user/${username}`,
                 {
-
-                }
+                    headers: {
+                                            Authorization: `Bearer ${token}`,
+                                        },
+                    }
             );
             console.log("Wat is de response van getUserData?",response)
 
@@ -64,9 +67,9 @@ function AuthContextProvider(props) {
         localStorage.setItem('username',username)
         const dataFromToken = jwtDecode(token);
         console.log("WHAT IS IN THIS TOKEN THING: ", dataFromToken);
-        // const userId = dataFromToken;
-        // console.log("USERID?:",userId)
-        getUserData(username);
+
+        console.log("Username?:",dataFromToken)
+        getUserData(username, token);
     }
 
     //hieronder het origineel
