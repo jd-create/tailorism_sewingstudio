@@ -21,7 +21,7 @@ function SignUp() {
         const response = await  axios.post("http://localhost:8080/api/auth/signup",{
             "username":data.username,"email":data.email,"password":data.password
         },)
-           console.log("Wat komt terug?",response.data);
+           // console.log("Wat komt terug?",response.data);
            setSuccessMessage("Registreren is gelukt. Je wordt nu doorgestuurd naar de loginpagina.");
                setTimeout(() => history.push("/signin"), 2000);
        } catch (e) {
@@ -31,24 +31,7 @@ function SignUp() {
        toggleLoading(false);
    }
 
-    // async function onSubmit(data) {
-    //     // setError('');
-    //
-    //     console.log("DATA VAN DE GEBRUIKER", data);
-    //     try {
-    //         const response = await  axios.get("http://localhost:8080/api/test/all",{},
-    //             {
-    //                 "username":data.username,
-    //                 "email":data.email,
-    //                 "password":data.password})
-    //
-    //         console.log("Wat komt terug?",response.data)
-    //     } catch (e) {
-    //         console.log("OH NO",e)
-    //     }
-    // }
-
-    return (
+     return (
         <>
             <h1>Registreren</h1>
             <p className='successmessage'>{successMessage}</p>

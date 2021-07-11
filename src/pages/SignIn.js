@@ -23,12 +23,11 @@ function SignIn() {
                 username: data.username,
                 password: data.password,
             });
-            console.log("WHAT'S IN THIS RESPONSE:",response)
-            console.log("")
-            console.log("GET USER ID:", response.data.username)
+            // console.log("WHAT'S IN THIS RESPONSE:",response)
+
 
             //roep login aan met de token, zo kunnen we hem doorgeven naar de context
-            login(response.data.accessToken,response.data.username);
+            login(response.data.accessToken);
 
         } catch (e) {
             console.log('Oh no', e);

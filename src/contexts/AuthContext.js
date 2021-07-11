@@ -35,40 +35,23 @@ function AuthContextProvider(props) {
                                         },
                     }
             );
-            console.log("Wat is de response van getUserData?",response)
+            console.log("Wat is de response van getUserData?",response.data.body)
 
             // setAuthState({user: response.data, status: "done"});
     //         history.push('/profile');
         } catch (e) { console.log("OH O, error getuserdata:",e)}
     }
 
-//hieronder het origineel
-    // async function getUserData(id,token) {
-    //     setAuthState({user: null, status: "pending"});
-    //     try {
-    //         const response = await axios.get(
-    //             `http://localhost:3000/600/users/${id}`,
-    //             {
-    //                 headers: {
-    //                     Authorization: `Bearer ${token}`,
-    //                 },
-    //             }
-    //         );
-    //
-    //         setAuthState({user: response.data, status: "done"});
-    //         history.push('/profile');
-    //     } catch (e) {}
-    // }
-    function login(token,username) {
+    function login(token) {
         console.log("DO WE HAVE A TOKEN NAO", token);
-        console.log("DO WE HAVE THE CORRESPONDING Username",username)
+        // console.log("DO WE HAVE THE CORRESPONDING Username",username)
 
         localStorage.setItem('token', token);
-        localStorage.setItem('username',username)
+        // localStorage.setItem('username',username)
         const dataFromToken = jwtDecode(token);
         console.log("WHAT IS IN THIS TOKEN THING: ", dataFromToken);
 
-        console.log("Username?:",dataFromToken)
+        const username = dataFromToken.sub
         getUserData(username, token);
     }
 
