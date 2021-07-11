@@ -11,6 +11,7 @@ function AuthContextProvider(props) {
     const [authState, setAuthState] = useState({user: null, status: "pending"});
 
     useEffect(() => {
+
         // TODO we proberen automatisch in te loggen wanneer we nog een token hebben
         setTimeout(() => setAuthState({user: null, status: "done"}), 2000);
         // const token = localStorage.getItem('token');
@@ -22,23 +23,23 @@ function AuthContextProvider(props) {
         //     }
         }, []);
 
-    async function getUserData(id,token) {
+    async function getUserData(username,token) {
         setAuthState({user: null, status: "pending"});
         try {
-            // const response = await axios.get(
-            //     `http://localhost:3000/600/users/${id}`,
-            //     {
-            //         headers: {
-            //             Authorization: `Bearer ${token}`,
-            //         },
-            //     }
-            // );
-            //
+            const response = await axios.get(
+                `http://localhost:8080/api/auth/600/user/${username}`,
+                {
+
+                }
+            );
+            console.log("Wat is de response van getUserData?",response)
+
             // setAuthState({user: response.data, status: "done"});
     //         history.push('/profile');
-        } catch (e) {}
+        } catch (e) { console.log("OH O, error getuserdata:",e)}
     }
 
+//hieronder het origineel
     // async function getUserData(id,token) {
     //     setAuthState({user: null, status: "pending"});
     //     try {
@@ -55,14 +56,17 @@ function AuthContextProvider(props) {
     //         history.push('/profile');
     //     } catch (e) {}
     // }
-    function login(token,id) {
+    function login(token,username) {
         console.log("DO WE HAVE A TOKEN NAO", token);
-        console.log("DO WE HAVE THE CORRESPONDING ID",id)
+        console.log("DO WE HAVE THE CORRESPONDING Username",username)
+
         localStorage.setItem('token', token);
+        localStorage.setItem('username',username)
         const dataFromToken = jwtDecode(token);
-            console.log("WHAT IS IN THIS TOKEN THING: ", dataFromToken);
+        console.log("WHAT IS IN THIS TOKEN THING: ", dataFromToken);
         // const userId = dataFromToken;
         // console.log("USERID?:",userId)
+        getUserData(username, token);
     }
 
     //hieronder het origineel

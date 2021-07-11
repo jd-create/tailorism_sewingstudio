@@ -24,10 +24,10 @@ function SignIn() {
                 password: data.password,
             });
             console.log("WHAT'S IN THIS RESPONSE:",response)
-            console.log("GET USER ID:", response.data.id)
-            // console.log("TOKEN?",response.data.accessToken);
+            console.log("GET USER ID:", response.data.username)
+
             //roep login aan met de token, zo kunnen we hem doorgeven naar de context
-            login(response.data.accessToken,response.data.id);
+            login(response.data.accessToken,response.data.username);
 
         } catch (e) {
             console.log('Oh no', e);
@@ -45,15 +45,7 @@ function SignIn() {
             </p>
 
             <form onSubmit={handleSubmit(onSubmit)}>
-                {/*<label htmlFor="email-field">*/}
-                {/*    Emailadres:*/}
-                {/*    <input*/}
-                {/*        type="email"*/}
-                {/*        id="email-field"*/}
-                {/*        name="email"*/}
-                {/*        {...register("email")}*/}
-                {/*    />*/}
-                {/*</label>*/}
+
                 <label htmlFor="username-field">
                     Gebruikersnaam:
                     <input
