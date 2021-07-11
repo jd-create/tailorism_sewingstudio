@@ -23,7 +23,7 @@ function AuthContextProvider(props) {
         //     }
         }, []);
 
-    async function getUserData(username,token) {
+    async function getUserData(username) {
         setAuthState({user: null, status: "pending"});
         try {
             const response = await axios.get(
@@ -66,7 +66,7 @@ function AuthContextProvider(props) {
         console.log("WHAT IS IN THIS TOKEN THING: ", dataFromToken);
         // const userId = dataFromToken;
         // console.log("USERID?:",userId)
-        getUserData(username, token);
+        getUserData(username);
     }
 
     //hieronder het origineel
