@@ -6,6 +6,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import AuthContextProvider from "./contexts/AuthContext";
 
+
 ReactDOM.render(
   <React.StrictMode>
       <Router>
