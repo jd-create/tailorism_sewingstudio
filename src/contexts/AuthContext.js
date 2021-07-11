@@ -14,13 +14,13 @@ function AuthContextProvider(props) {
 
         // TODO we proberen automatisch in te loggen wanneer we nog een token hebben
         setTimeout(() => setAuthState({user: null, status: "done"}), 2000);
-        // const token = localStorage.getItem('token');
-        // if(token) {
-        //     login(token);
-        // } else {
-        //     setAuthState({user: null, status: "done"});
-        //     history.push('/')
-        //     }
+        const token = localStorage.getItem('token');
+        if(token) {
+            login(token);
+        } else {
+            setAuthState({user: null, status: "done"});
+            history.push('/')
+            }
         }, []);
 
     async function getUserData(username,token) {
@@ -37,34 +37,21 @@ function AuthContextProvider(props) {
             );
             console.log("Wat is de response van getUserData?",response.data.body)
 
-            // setAuthState({user: response.data, status: "done"});
-    //         history.push('/profile');
+            setAuthState({user: response.data.body, status: "done"});
+            console.log("authstate???", authState)
+            // history.push('/profile');
         } catch (e) { console.log("OH O, error getuserdata:",e)}
     }
 
     function login(token) {
-        console.log("DO WE HAVE A TOKEN NAO", token);
-        // console.log("DO WE HAVE THE CORRESPONDING Username",username)
 
         localStorage.setItem('token', token);
-        // localStorage.setItem('username',username)
+
         const dataFromToken = jwtDecode(token);
-        console.log("WHAT IS IN THIS TOKEN THING: ", dataFromToken);
 
         const username = dataFromToken.sub
         getUserData(username, token);
     }
-
-    //hieronder het origineel
-    // async function login(token) {
-    //     // localStorage.setItem('token', token);
-    //     // const dataFromToken = jwtDecode(token);
-    //     console.log("WHAT IS IN THIS TOKEN THING: ", dataFromToken.sub);
-    //     const userId = dataFromToken.sub;
-    //
-    //     getUserData(userId, token);
-    // }
-
 
     function logout() {
 
@@ -76,7 +63,7 @@ function AuthContextProvider(props) {
     //     history.push("/");
     // }
 
-//Hieronder het origineel:
+
    const data = {authState: authState, login: login, logout: logout};
 
 
