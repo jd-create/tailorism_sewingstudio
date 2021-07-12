@@ -4,29 +4,31 @@ import {authContext} from "../contexts/AuthContext";
 
 function Header() {
     const history = useHistory();
-    // const {
-    //     logout,
-    //     authState: {user},
-    // } = useContext(authContext);
+    const {
+        logout,
+        authState: {user},
+    } = useContext(authContext);
 
     return (
-        <header>
-            <div>
-
-                    <>
-                        <button type="button" onClick={() => history.push('/signin')}>
-                    Log in
+    <header>
+        <div>
+            {!user ? (
+                <>
+                    <button type="button" onClick={() => history.push('/signin')}>
+                        Log in
+                    </button>
+                    <button type="button" onClick={() => history.push('/signup')}>
+                        Registreren
+                    </button>
+                </>
+            ) :(
+                <button type="button" onClick={logout}>
+                    Loguit
                 </button>
-                <button type="button" onClick={() => history.push('/signup')}>
-                    Registreren
-                </button>
-                    </>
-
-
-
-            </div>
-        </header>
-    );
+            )}
+        </div>
+    </header>
+);
 }
 
 export default Header;

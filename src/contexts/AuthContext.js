@@ -35,11 +35,11 @@ function AuthContextProvider(props) {
                                         },
                     }
             );
-            console.log("Wat is de response van getUserData?",response.data.body)
+            console.log("Wat is de response van getUserData?",response.data)
 
-            setAuthState({user: response.data.body, status: "done"});
+            setAuthState({user: response.data, status: "done"});
             console.log("authstate???", authState)
-            // history.push('/profile');
+            history.push('/profile');
         } catch (e) { console.log("OH O, error getuserdata:",e)}
     }
 
@@ -53,15 +53,12 @@ function AuthContextProvider(props) {
         getUserData(username, token);
     }
 
-    function logout() {
 
+    function logout() {
+        localStorage.removeItem('token');
+        setAuthState({user: null, status: 'done'});
+        history.push("/");
     }
-    //Hieronder het origineel
-    // function logout() {
-    //     localStorage.removeItem('token');
-    //     setAuthState({user: null, status: 'done'});
-    //     history.push("/");
-    // }
 
 
    const data = {authState: authState, login: login, logout: logout};
