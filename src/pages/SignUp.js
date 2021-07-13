@@ -34,13 +34,9 @@ function SignUp() {
      return (
         <>
             <h1>Registreren</h1>
-            <p className='successmessage'>{successMessage}</p>
-            <p>{loading && "Moment geduld aub"}</p>
-            <p>
 
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab alias cum debitis dolor dolore fuga id
-                molestias qui quo unde?
-            </p>
+            <p>{loading && "Moment geduld aub"}</p>
+            <p className='successmessage'>{successMessage}</p>
             {!successMessage && (
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <label htmlFor="username-field">

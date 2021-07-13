@@ -14,6 +14,9 @@ function Header() {
         <div>
             {!user ? (
                 <>
+                    <button type="button" onClick={() => history.push('/')}>
+                        Home
+                    </button>
                     <button type="button" onClick={() => history.push('/signin')}>
                         Log in
                     </button>
@@ -32,24 +35,3 @@ function Header() {
 }
 
 export default Header;
-// Dit is het originele blok: komt in de function header
-// return (
-//     <header>
-//         <div>
-//             {!user ? (
-//                 <>
-//                     <button type="button" onClick={() => history.push('/signin')}>
-//                         Log in
-//                     </button>
-//                     <button type="button" onClick={() => history.push('/signup')}>
-//                         Registreren
-//                     </button>
-//                 </>
-//             ) :(
-//                 <button type="button" onClick={logout}>
-//                     Loguit
-//                 </button>
-//             )}
-//         </div>
-//     </header>
-// );

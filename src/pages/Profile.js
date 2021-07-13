@@ -10,12 +10,12 @@ function Profile() {
     const [content, setContent]= useState(null);
     const [error, setError]= useState(null);
     //laadtijden implementeren lukt niet; veroorzaakt teveel rerendering
-    const [loading, toggleLoading] = useState(false);
+    // const [loading, toggleLoading] = useState(false);
 
 
     useEffect(() => {
         async function fetchPrivateContent(){
-            toggleLoading(true);
+            // toggleLoading(true);
             console.log("FETCH DATA IN PROFILE")
             try {
                 const token = localStorage.getItem('token')
@@ -32,14 +32,14 @@ function Profile() {
                     }
                     //onderstaande error krijg ik niet getest, nuttig?
                     catch (e) {}
-                toggleLoading(false);
+                // toggleLoading(false);
                 }
 
 
         fetchPrivateContent();
     }, []);
         console.log("WHAT IS CONTENT??:",content)
-        toggleLoading(false);
+        // toggleLoading(false);
 
     return (
         <>
@@ -48,15 +48,15 @@ function Profile() {
                 <h2>Gegevens</h2>
                 {/*{//het vraagteken hieronder houdt een extra check in of de user wel gevuld is (niet null), optional chaining operator}*/}
                 <p>
-                    <strong>Gebruikersnaam:</strong> {user && user.username}
+                    <strong>Gebruikersnaam:</strong> {user && user.body.username}
                 </p>
                 <p>
-                    <strong>Email:</strong> {user?.email}
+                    <strong>Email:</strong> {user?.body.email}
                 </p>
             </section>
             <section>
-                <h2>{content?.title}</h2>
-                <p>{content?.content}</p>
+                <h2>{content?.data}</h2>
+                <p>{content?.data}</p>
             </section>
             <p>Terug naar de <Link to="/">Homepagina</Link></p>
         </>
