@@ -37,6 +37,7 @@ function SignUp() {
             <p className='successmessage'>{successMessage}</p>
             <p>{loading && "Moment geduld aub"}</p>
             <p>
+
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab alias cum debitis dolor dolore fuga id
                 molestias qui quo unde?
             </p>
