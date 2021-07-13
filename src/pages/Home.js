@@ -9,8 +9,10 @@ function Home() {
         <>
             <h1>Homepagina</h1>
             <section>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab alias cum debitis dolor dolore fuga id molestias
-                    qui quo unde?</p>
+                <h4>Welkom in ons atelier Tailorism!</h4>
+                <p>Wij zijn fan van een oneindig kledingleven. Daarom bieden we een vermaakservice aan en verkopen we
+                    artikelen, waarmee je zelf aan de slag kunt.
+                    Vermaak jezelf op deze site!</p>
             </section>
             <section>
                 <p>

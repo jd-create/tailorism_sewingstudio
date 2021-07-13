@@ -14,83 +14,53 @@ function AuthContextProvider(props) {
 
         // TODO we proberen automatisch in te loggen wanneer we nog een token hebben
         setTimeout(() => setAuthState({user: null, status: "done"}), 2000);
-        // const token = localStorage.getItem('token');
-        // if(token) {
-        //     login(token);
-        // } else {
-        //     setAuthState({user: null, status: "done"});
-        //     history.push('/')
-        //     }
+        const token = localStorage.getItem('token');
+        if(token) {
+            login(token);
+        } else {
+            setAuthState({user: null, status: "done"});
+            history.push('/')
+            }
         }, []);
 
     async function getUserData(username,token) {
         setAuthState({user: null, status: "pending"});
         try {
+            console.log("username and token?",username, token)
             const response = await axios.get(
                 `http://localhost:8080/api/auth/600/user/${username}`,
                 {
-
-                }
+                    headers: {
+                                            Authorization: `Bearer ${token}`,
+                                        },
+                    }
             );
-            console.log("Wat is de response van getUserData?",response)
+            console.log("Wat is de response van getUserData?",response.data)
 
-            // setAuthState({user: response.data, status: "done"});
-    //         history.push('/profile');
+            setAuthState({user: response.data, status: "done"});
+            console.log("authstate???", authState)
+            history.push('/profile');
         } catch (e) { console.log("OH O, error getuserdata:",e)}
     }
 
-//hieronder het origineel
-    // async function getUserData(id,token) {
-    //     setAuthState({user: null, status: "pending"});
-    //     try {
-    //         const response = await axios.get(
-    //             `http://localhost:3000/600/users/${id}`,
-    //             {
-    //                 headers: {
-    //                     Authorization: `Bearer ${token}`,
-    //                 },
-    //             }
-    //         );
-    //
-    //         setAuthState({user: response.data, status: "done"});
-    //         history.push('/profile');
-    //     } catch (e) {}
-    // }
-    function login(token,username) {
-        console.log("DO WE HAVE A TOKEN NAO", token);
-        console.log("DO WE HAVE THE CORRESPONDING Username",username)
+    function login(token) {
 
         localStorage.setItem('token', token);
-        localStorage.setItem('username',username)
+
         const dataFromToken = jwtDecode(token);
-        console.log("WHAT IS IN THIS TOKEN THING: ", dataFromToken);
-        // const userId = dataFromToken;
-        // console.log("USERID?:",userId)
+
+        const username = dataFromToken.sub
         getUserData(username, token);
     }
 
-    //hieronder het origineel
-    // async function login(token) {
-    //     // localStorage.setItem('token', token);
-    //     // const dataFromToken = jwtDecode(token);
-    //     console.log("WHAT IS IN THIS TOKEN THING: ", dataFromToken.sub);
-    //     const userId = dataFromToken.sub;
-    //
-    //     getUserData(userId, token);
-    // }
-
 
     function logout() {
-
+        localStorage.removeItem('token');
+        setAuthState({user: null, status: 'done'});
+        history.push("/");
     }
-    //Hieronder het origineel
-    // function logout() {
-    //     localStorage.removeItem('token');
-    //     setAuthState({user: null, status: 'done'});
-    //     history.push("/");
-    // }
 
-//Hieronder het origineel:
+
    const data = {authState: authState, login: login, logout: logout};
 
 
