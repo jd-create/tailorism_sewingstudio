@@ -21,14 +21,15 @@ function Profile() {
                 const token = localStorage.getItem('token')
                 console.log("TOKEN UIT LOCAL STORAGE:", token)
                 const response = await axios.get(
-                    `http://localhost:8080/api/test/customer`,
+                    `http://localhost:8080/api/operator/product/list`,
                     {headers:
                             {Authorization: `Bearer ${token}`,
                             },
                     }
                 );
                 console.log("DO WE GET A RESPONSE:", response)
-                setContent(response.data);
+                const productDescription = response.data.find((data) => {return data.description ==='Jasverlenging'})
+                setContent(productDescription);
                     }
                     //onderstaande error krijg ik niet getest, nuttig?
                     catch (e) {}
@@ -55,8 +56,9 @@ function Profile() {
                 </p>
             </section>
             <section>
-                <h2>{content?.data}</h2>
-                <p>{content?.data}</p>
+                <h4>{content?.description}</h4>
+                <h4>Prijs: </h4>
+                <p> {content?.price} euro</p>
             </section>
             <p>Terug naar de <Link to="/">Homepagina</Link></p>
         </>
