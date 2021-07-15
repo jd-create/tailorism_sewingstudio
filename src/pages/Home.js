@@ -11,8 +11,10 @@ function Home() {
             <section>
                 <h4>Welkom in ons atelier Tailorism!</h4>
                 <p>Wij zijn fan van een oneindig kledingleven. Daarom bieden we een vermaakservice aan en verkopen we
-                    artikelen, waarmee je zelf aan de slag kunt.
-                    Vermaak jezelf op deze site!</p>
+                    artikelen, waarmee je zelf aan de slag kunt.</p>
+                <br/>
+                <link/>
+                    <p>Vermaak jezelf op deze site!</p>
             </section>
             <section>
                 <p>

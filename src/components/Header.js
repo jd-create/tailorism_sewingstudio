@@ -1,6 +1,7 @@
 import React, {useContext} from 'react';
 import {useHistory} from 'react-router-dom';
 import {authContext} from "../contexts/AuthContext";
+import { ReactComponent as ShoppingCart } from '../assets/winkelmandje.svg';
 
 function Header() {
     const history = useHistory();
@@ -11,7 +12,7 @@ function Header() {
 
     return (
     <header>
-        <div>
+        <div className="nav">
             {!user ? (
                 <>
                     <button type="button" onClick={() => history.push('/')}>
@@ -23,6 +24,7 @@ function Header() {
                     <button type="button" onClick={() => history.push('/signup')}>
                         Registreren
                     </button>
+                    <ShoppingCart className="shopping-cart-icon" />
                 </>
             ) :(
                 <button type="button" onClick={logout}>
