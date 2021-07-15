@@ -15,16 +15,27 @@ function Header() {
         <div className="nav">
             {!user ? (
                 <>
+                    <div>
                     <button type="button" onClick={() => history.push('/')}>
                         Home
                     </button>
+
+
+
                     <button type="button" onClick={() => history.push('/signin')}>
                         Log in
                     </button>
+
+
+
                     <button type="button" onClick={() => history.push('/signup')}>
                         Registreren
                     </button>
+                    </div>
+
+                    <div>
                     <ShoppingCart className="shopping-cart-icon" />
+                    </div>
                 </>
             ) :(
                 <button type="button" onClick={logout}>

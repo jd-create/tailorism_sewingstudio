@@ -7,10 +7,7 @@
 
 }
 
-#nav {
-  position: absolute;
-  top: 0;
-  right: 0;
+.nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -32,6 +29,8 @@ button + button {
 .shopping-cart-icon {
   width: 40px;
   height: 40px;
+  padding-right: 10px;
+  padding-top: 5px;
 }
 
 .shopping-cart-icon > path {
