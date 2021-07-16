@@ -41,7 +41,7 @@ function Header() {
                     />
                     </div>
                     <div>
-                    <ShoppingCart className="shopping-cart-icon" />
+                    <ShoppingCart className="shopping-cart-icon" onClick={() => history.push('/shopping')} />
                     </div>
                 </>
             ) :(

@@ -5,6 +5,7 @@ import Profile from './pages/Profile';
 import Home from './pages/Home';
 import SignIn from './pages/SignIn';
 import SignUp from './pages/SignUp';
+import Shopping from './pages/Shopping';
 import './App.css';
 
 
@@ -25,6 +26,9 @@ function App() {
                     </Route>
                     <Route exact path="/signup">
                         <SignUp/>
+                    </Route>
+                    <Route exact path="/shopping">
+                        <Shopping/>
                     </Route>
                 </Switch>
             </div>
