@@ -27,14 +27,24 @@ button + button {
 }
 
 .shopping-cart-icon {
+  position: absolute;
+  right: 0;
+  top: 0;
   width: 40px;
   height: 40px;
   padding-right: 10px;
-  padding-top: 5px;
+  margin-right: 60px;
+
 }
 
 .shopping-cart-icon > path {
   fill: #715b64ff;
+}
+
+.logo-icon {
+  position: absolute;
+  top: 0;
+
 }
 
 form {
