@@ -32,6 +32,9 @@ function Header() {
                     <button type="button" onClick={() => history.push('/signup')}>
                         Registreren
                     </button>
+                        <button type="button" onClick={() => history.push('/sewingstudio')}>
+                            Naaiatelier
+                        </button>
                     </div>
 
                     <div>

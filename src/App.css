@@ -45,6 +45,7 @@ button + button {
   position: absolute;
   top: 0;
 
+
 }
 
 form {
@@ -102,4 +103,39 @@ section  {
 
 p.successmessage {
   color: green;
+}
+
+main {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 100px;
+}
+
+.form-container {
+  width: 400px;
+}
+
+.product {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #333333;
+  width: 30%;
+}
+
+.product-name {
+  font-weight: 300;
+  color: #715b64ff;
+  margin: 20px 0;
+}
+
+.product-description {
+  font-weight: 200;
+  font-size: 16px;
+  text-align: justify;
+}
+
+.product img {
+  width: 300px;
 }
