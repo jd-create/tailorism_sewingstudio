@@ -8,6 +8,8 @@ import Fabricmarket from "./Fabricmarket";
 import Sewingorder from "./Sewingorder";
 import {Link} from "react-router-dom";
 
+
+
 function Sewingstudio() {
     return(
     <>
@@ -17,24 +19,29 @@ function Sewingstudio() {
             <Product
                 image={berenmuts}
                 title="Met deze muts zie je beren lopen!"
-                description="Dit patroon is leuk voor kinderen! In onze rubriek artikelen vind je meer zelfmaak patronen."
-                button="artikelen"
-                path={Articles}
+                description="Dit patroon is leuk voor kinderen! "
             />
+            <p>
+                In onze rubriek {Articles} <Link to="/articles">artikelen</Link> vind je meer zelfmaak patronen.
+            </p>
             <Product
                 image={stof}
                 title="Stoffenmarkt"
                 description="Kom je snuffelen tussen onze stoffen? Bekijk de stoffenmarkt"
-                button="stoffenmarkt"
-                path={Fabricmarket}
+
             />
+            <p>
+                Kom struinen op onze {Fabricmarket} <Link to="/fabricmarket">stoffenmarkt.</Link>
+            </p>
             <Product
                 image={spijkerjas}
                 title="Deze spijkerjas heeft een tweede leven verdiend!"
                 description="Heb jij een kledingstuk die je wilt oppimpen? Onze naaister helpen je graag!"
-                button="Naai-opdracht"
-                path={Sewingorder}
+
             />
+            <p>
+                Klik hier voor een {Sewingorder} <Link to="/sewingorder">naai-opdracht.</Link>
+            </p>
 
         </main>
     </>
