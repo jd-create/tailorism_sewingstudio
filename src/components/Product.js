@@ -1,6 +1,7 @@
 import React from "react";
+import { Link } from 'react-router-dom';
 
-function Product({image, title, description}) {
+function Product({image, title, description, button, path}) {
     return (
 
         <article className="product">
@@ -11,6 +12,9 @@ function Product({image, title, description}) {
             <p className="product-description">
                 {description}
             </p>
+            <button type="button" onClick={() =>Link( {...path})} className="product-button">
+                {button}
+            </button>
         </article>
     )
 }

@@ -7,7 +7,10 @@ import SignIn from './pages/SignIn';
 import SignUp from './pages/SignUp';
 import Shopping from './pages/Shopping';
 import Sewingstudio from './pages/Sewingstudio';
+import Articles from "./pages/Articles";
 import './App.css';
+import Fabricmarket from "./pages/Fabricmarket";
+import Sewingorder from "./pages/Sewingorder";
 
 
 function App() {
@@ -33,6 +36,15 @@ function App() {
                     </Route>
                     <Route exact path="/sewingstudio">
                         <Sewingstudio/>
+                    </Route>
+                    <Route exact path="/articles">
+                        <Articles/>
+                    </Route>
+                    <Route exact path="/fabricmarket">
+                        <Fabricmarket/>
+                    </Route>
+                    <Route exact path="/sewingorder">
+                        <Sewingorder/>
                     </Route>
                 </Switch>
             </div>
