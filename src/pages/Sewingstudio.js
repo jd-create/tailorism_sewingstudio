@@ -13,37 +13,47 @@ import {Link} from "react-router-dom";
 function Sewingstudio() {
     return(
     <>
-        <h1>Naaiatelier Tailorism</h1>
+        <h1 className="item" id="item-a">Naaiatelier Tailorism</h1>
         <main>
-
             <Product
                 image={berenmuts}
-                title="Met deze muts zie je beren lopen!"
-                description="Dit patroon is leuk voor kinderen! "
+                title="Kiekeboe!"
+                description="Met deze muts zie je beren lopen."
             />
-            <p>
-                In onze rubriek {Articles} <Link to="/articles">artikelen</Link> vind je meer zelfmaak patronen.
-            </p>
-            <Product
+
+            <Product id="item-c"
                 image={stof}
                 title="Stoffenmarkt"
-                description="Kom je snuffelen tussen onze stoffen? Bekijk de stoffenmarkt"
-
+                description="Kom je snuffelen tussen onze stoffen?"
             />
-            <p>
-                Kom struinen op onze {Fabricmarket} <Link to="/fabricmarket">stoffenmarkt.</Link>
-            </p>
+
             <Product
                 image={spijkerjas}
                 title="Deze spijkerjas heeft een tweede leven verdiend!"
                 description="Heb jij een kledingstuk die je wilt oppimpen? Onze naaister helpen je graag!"
-
             />
-            <p>
+        </main>
+            <div className="footer">
+                <div>
+            <p className="product-link">
+                In onze rubriek {Articles} <Link to="/articles">artikelen</Link> vind je meer zelfmaak patronen.
+            </p>
+                </div>
+            <div>
+            <p className="product-link">
+                Kom struinen op onze {Fabricmarket} <Link to="/fabricmarket">stoffenmarkt.</Link>
+            </p>
+            </div>
+            <div>
+            <p className="product-link">
                 Klik hier voor een {Sewingorder} <Link to="/sewingorder">naai-opdracht.</Link>
             </p>
+            </div>
+            </div>
 
-        </main>
+
+
+
     </>
     );
 }
