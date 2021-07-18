@@ -62,12 +62,40 @@ De pagina van het Naaiatelier:
 Gebruikersnaam: operator
 Wachtwoord: password
 
-### Klant
-Gebruikersnaam: zelf te verzinnen
+### Nieuwe klant
+Gebruikersnaam: zelf te verzinnen, bijvoorbeeld: user2
+Email: zelf te verzinnen, bijvoorbeeld: user2@mail.nl
 Wachtwoord: zelf te verzinnen óf password
 
 ### Bestaande klant
-Dit is een feature die op de backlog staat voor een volgende sprint (werkt nog niet naar behoren).
+Dit is een feature die op de backlog staat voor een volgende sprint omdat dit een openstaand issue is. Dit is nu op te lossen door de token in de lokale opslag te verwijderen. Wel kun je inloggen met een door jezelf aangemaakte user.
 
-Van de inlogpagina word je na succesvolle inlog doorgeleid naar de profielpagina.
-Deze is ook bereikbaar via [http://localhost:3000](http://localhost:3000/profile).
+## Profielpagina met private content
+
+Via de inlogpagina word je na succesvolle inlog doorgeleid naar de profielpagina.
+Deze is ook bereikbaar via [http://localhost:3000](http://localhost:3000/profile) en er staat een link op de Homepagina.
+
+Op deze pagina is als klant zichtbaar, diens gebruikersnaam en email. 
+
+Op deze pagina is als operator zichtbaar wat de beschrijving is van een naaiopdracht en de prijs hiervan. Dit is een voorbeeld van private content die zichtbaar is voor een specifieke rol. Deze functie zou ik graag uitbreiden in een volgende update. 
+
+## Winkelwagentje
+
+Via het winkelwagentje word je naar de Bestel pagina geleid. Momenteel zijn hier nog geen gegevens beschikbaar. In een volgende update wil ik het bestelproces vervolmaken. Ik vind het spijtig dit nu nog niet bereikt te hebben. Het maken van een dynamische frontend vereist veel kunde en tijd om alle issues aan te pakken. De aansluiting op de backend is op een basic niveau gelukt en dat is al een hele kunst. Ervaring is een groot goed die in kleine stappen en veel tijd verworven wordt. 
+
+## Happy flow
+
+Ga naar het Naaiatelier en kijk lekker rond. Je kunt de links artikelen, stoffenmarkt of naaiopdracht bekijken. Je bent enthousiast geworden en gaat je registreren. 
+
+Klik op Registreren.
+Gebruikersnaam: user2
+Email: user2@mail.nl
+Wachtwoord: password
+
+Bericht registreren is succesvol en je wordt doorgeleid naar de loginpagina.
+
+Log vervolgens in met
+Gebruikersnaam: user2
+Wachtwoord: password
+
+Je wordt vanzelf doorgestuurd naar de profielpagina. Van daaruit kun je naar de Loguit knop.

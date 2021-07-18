@@ -45,7 +45,7 @@ function Sewingstudio() {
                 </div>
                 <div>
                     <p className="product-link">
-                        Klik hier voor een {Sewingorder} <Link to="/sewingorder">naai-opdracht.</Link>
+                        Klik hier voor een {Sewingorder} <Link to="/sewingorder">naaiopdracht.</Link>
                     </p>
                 </div>
             </div>
