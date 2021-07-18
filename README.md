@@ -1,70 +1,101 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Installatiehandleiding
 
-## Available Scripts
+Dit project is gegenereerd met [Create React App].
 
-In the project directory, you can run:
+## Beschikbare scripts
+
+Om dit project te runnen gebruik je het volgende:
 
 ### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Daarmee runt de app de development server. Deze wordt automatsch geopend, maar is altijd te bereiken via:\
+[http://localhost:3000](http://localhost:3000).
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Bij wijzigingen wordt deze automatisch herladen.\
+Tevens worden er gebruik gemaakt van Eslint en error of aanwijzigingen getoond in de console.
+Om zaken te testen kan het volgende gerund worden:
 
 ### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Inleiding
 
-### `npm run build`
+Deze applicatie is de Frontend van een naaiatelier genaamd Tailorism. Deze applicatie sluit aan op de Backend die gemaakt is in de vorige leerlijn.  
+Het naaiatelier wordt gerund door een team van naaisters, operators (backoffice medewerkers) en niet te vergeten klanten.  
+Een klant registreert zichzelf (eenmalig) en logt vervolgens in. Daarna kan de klant zijn profiel bekijken, met inhoud die enkel voor hem zichtbaar is. De klant kan artikelen bestellen en een naaiopdracht indienen om een kledingstuk een te herstellen en/of mooier te maken. 
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+De operator kan een lijst met producten ophalen die de klant besteld heeft. Hierdoor is het mogelijk om de verzending voor te bereiden en opdrachten te geven aan de naaisters. Deze lijst kan de operator ophalen als deze is ingelogd. 
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+De naaisters doen het werk in opdracht van de operator zodat hun werkschema zo efficient mogelijk wordt ingedeeld. Indien nodig hebben ze contact met de klant als de opdracht extra communicatie vereist. 
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Belangrijkste pagina's
 
-### `npm run eject`
+De Homepagina:
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+![Homepagina](../tailorism_sewingstudio/src/assets/Homepage.png "Homepage")
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+De Login pagina:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+![Loginpagina](../tailorism_sewingstudio/src/assets/Loginpage.png "Loginpage")
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+De Profiel pagina:
 
-## Learn More
+![Profielpagina](../tailorism_sewingstudio/src/assets/Profilepage.png "Profilepage")
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+De pagina van het Naaiatelier:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+![Naaiatelierpagina](../tailorism_sewingstudio/src/assets/Sewingstudiopage.png "Sewingorderpage")
 
-### Code Splitting
+## Benodigdheden voor gebruik
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+- De frontend broncode of repository https://github.com/jd-create/tailorism_sewingstudio.git
+- De backend broncode of repository https://github.com/jd-create/Tailorism_Backend.git
+  
+- Postgres met PGadmin
+- De inloggegevens voor de database:
+  - naam database: Jennifer
+  - wachtwoord: Jennifer
+- Eventueel postman, dit is vooral bij testen prettig
+- Gebruikersgegevens om in te loggen als een user/customer/operator
 
-### Analyzing the Bundle Size
+### Backoffice medewerker
+Gebruikersnaam: operator
+Wachtwoord: password
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### Nieuwe klant
+Gebruikersnaam: zelf te verzinnen, bijvoorbeeld: user2
+Email: zelf te verzinnen, bijvoorbeeld: user2@mail.nl
+Wachtwoord: zelf te verzinnen óf password
 
-### Making a Progressive Web App
+### Bestaande klant
+Dit is een feature die op de backlog staat voor een volgende sprint omdat dit een openstaand issue is. Dit is nu op te lossen door de token in de lokale opslag te verwijderen. Wel kun je inloggen met een door jezelf aangemaakte user.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## Profielpagina met private content
 
-### Advanced Configuration
+Via de inlogpagina word je na succesvolle inlog doorgeleid naar de profielpagina.
+Deze is ook bereikbaar via [http://localhost:3000](http://localhost:3000/profile) en er staat een link op de Homepagina.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+Op deze pagina is als klant zichtbaar, diens gebruikersnaam en email. 
 
-### Deployment
+Op deze pagina is als operator zichtbaar wat de beschrijving is van een naaiopdracht en de prijs hiervan. Dit is een voorbeeld van private content die zichtbaar is voor een specifieke rol. Deze functie zou ik graag uitbreiden in een volgende update. 
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## Winkelwagentje
 
-### `npm run build` fails to minify
+Via het winkelwagentje word je naar de Bestel pagina geleid. Momenteel zijn hier nog geen gegevens beschikbaar. In een volgende update wil ik het bestelproces vervolmaken. Ik vind het spijtig dit nu nog niet bereikt te hebben. Het maken van een dynamische frontend vereist veel kunde en tijd om alle issues aan te pakken. De aansluiting op de backend is op een basic niveau gelukt en dat is al een hele kunst. Ervaring is een groot goed die in kleine stappen en veel tijd verworven wordt. 
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Happy flow
+
+Ga naar het Naaiatelier en kijk lekker rond. Je kunt de links artikelen, stoffenmarkt of naaiopdracht bekijken. Je bent enthousiast geworden en gaat je registreren. 
+
+Klik op Registreren.
+Gebruikersnaam: user2
+Email: user2@mail.nl
+Wachtwoord: password
+
+Bericht registreren is succesvol en je wordt doorgeleid naar de loginpagina.
+
+Log vervolgens in met
+Gebruikersnaam: user2
+Wachtwoord: password
+
+Je wordt vanzelf doorgestuurd naar de profielpagina. Van daaruit kun je naar de Loguit knop.

@@ -3,6 +3,7 @@ import {Link} from 'react-router-dom';
 import {authContext} from '../contexts/AuthContext'
 import axios from "axios";
 
+
 function Profile() {
     const { authState: {user},
     } = useContext(authContext);
@@ -12,14 +13,13 @@ function Profile() {
     //laadtijden implementeren lukt niet; veroorzaakt teveel rerendering
     // const [loading, toggleLoading] = useState(false);
 
-
     useEffect(() => {
         async function fetchPrivateContent(){
             // toggleLoading(true);
-            console.log("FETCH DATA IN PROFILE")
+            // console.log("FETCH DATA IN PROFILE")
             try {
                 const token = localStorage.getItem('token')
-                console.log("TOKEN UIT LOCAL STORAGE:", token)
+                // console.log("TOKEN UIT LOCAL STORAGE:", token)
                 const response = await axios.get(
                     `http://localhost:8080/api/operator/product/list`,
                     {headers:
@@ -27,7 +27,7 @@ function Profile() {
                             },
                     }
                 );
-                console.log("DO WE GET A RESPONSE:", response)
+                // console.log("DO WE GET A RESPONSE:", response)
                 const productDescription = response.data.find((data) => {return data.description ==='Jasverlenging'})
                 setContent(productDescription);
                     }
@@ -35,11 +35,9 @@ function Profile() {
                     catch (e) {}
                 // toggleLoading(false);
                 }
-
-
-        fetchPrivateContent();
+                fetchPrivateContent();
     }, []);
-        console.log("WHAT IS CONTENT??:",content)
+        // console.log("WHAT IS CONTENT??:",content)
         // toggleLoading(false);
 
     return (
@@ -49,7 +47,7 @@ function Profile() {
                 <h2>Gegevens</h2>
                 {/*{//het vraagteken hieronder houdt een extra check in of de user wel gevuld is (niet null), optional chaining operator}*/}
                 <p>
-                    <strong>Gebruikersnaam:</strong> {user && user.body.username}
+                    <strong>Gebruikersnaam:</strong> {user && user?.body.username}
                 </p>
                 <p>
                     <strong>Email:</strong> {user?.body.email}

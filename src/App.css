@@ -1,18 +1,15 @@
-
-
 .header {
   position: relative;
   color: white;
   padding: 20px;
-
 }
 
 .nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-
 }
+
 button {
   border-radius: 1px;
   border: 2px solid #7cc6feff;
@@ -34,7 +31,6 @@ button + button {
   height: 40px;
   padding-right: 10px;
   margin-right: 60px;
-
 }
 
 .shopping-cart-icon > path {
@@ -44,7 +40,6 @@ button + button {
 .logo-icon {
   position: absolute;
   top: 0;
-
 }
 
 form {
@@ -67,8 +62,6 @@ form input {
   margin: 6px 0;
 }
 
-
-
 h2 {
   margin: 32px 0 24px 0;
 }
@@ -87,7 +80,7 @@ button.form-button {
   animation: rotating 1.5s linear infinite;
 }
 
-section  {
+section {
   margin: 0 0 50px 0;
 }
 
@@ -103,3 +96,45 @@ section  {
 p.successmessage {
   color: green;
 }
+
+.form-container {
+  width: 400px;
+}
+
+main {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 40px;
+}
+
+.product {
+  flex-direction: column;
+  align-items: center;
+  color: #333333;
+  width: 30%;
+}
+
+.product-name {
+  font-weight: 200;
+  color: #715b64ff;
+  margin: 20px 0;
+}
+
+.product-description {
+  font-weight: 100;
+  font-size: 16px;
+  text-align: justify;
+}
+
+.product img {
+  width: 200px;
+  padding-top: 25px;
+}
+
+#footer {
+  flex-direction: row;
+}
+
+
+
