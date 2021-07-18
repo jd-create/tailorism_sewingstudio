@@ -1,8 +1,8 @@
 import React from "react";
 import Product from "../components/Product";
 import stof1 from "../assets/vintage1.png";
-import stof2 from "../assets/vintage2.png";
-import stof3 from "../assets/vintage3.png";
+import stof2 from "../assets/vintage2.jpg";
+import stof3 from "../assets/vintage3.jpg";
 
 
 function Fabricmarket() {

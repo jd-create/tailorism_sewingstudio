@@ -2,7 +2,7 @@ import React from "react";
 import Product from "../components/Product";
 import borduurring from "../assets/borduurring.png"
 import macramegaren from "../assets/macramegaren.png"
-import lint from "../assets/lint.png"
+import lint from "../assets/lint.jpg"
 
 
 function Articles() {

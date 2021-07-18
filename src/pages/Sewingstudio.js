@@ -2,7 +2,7 @@ import React from "react";
 import Product from '../components/Product'
 import berenmuts from '../assets/berenmuts.jpg'
 import spijkerjas from '../assets/spijkerjas.jpg'
-import stof from '../assets/stof.png'
+import stof from '../assets/stof.jpg'
 import Articles from "./Articles";
 import Fabricmarket from "./Fabricmarket";
 import Sewingorder from "./Sewingorder";

@@ -1,6 +1,6 @@
 import React from "react";
 import Product from "../components/Product";
-import rok from "../assets/rok.png";
+import rok from "../assets/rok.jpg";
 import jas from "../assets/jas.jpg";
 import broek from "../assets/broek.jpg";
 
