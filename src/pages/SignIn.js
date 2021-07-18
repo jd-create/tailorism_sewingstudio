@@ -10,7 +10,6 @@ function SignIn() {
     const {login} = useContext(authContext);
     const [loading, toggleLoading] = useState(false);
     const {handleSubmit, register} = useForm();
-    // console.log('WAT ZIT IN AUTHSTUFF:',login);
 
     const [error, setError] = useState("")
 
@@ -18,15 +17,12 @@ function SignIn() {
         setError('');
         toggleLoading(true);
         try {
-            // console.log("DATA UIT FORMULIER??", data);
             const response = await axios.post("http://localhost:8080/api/auth/signin", {
                 username: data.username,
                 password: data.password,
             });
-            // console.log("WHAT'S IN THIS RESPONSE:",response)
 
-
-            //roep login aan met de token, zo kunnen we hem doorgeven naar de context
+            //calling login with token for passing to context
             login(response.data.accessToken);
 
         } catch (e) {

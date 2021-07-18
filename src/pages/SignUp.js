@@ -15,7 +15,6 @@ function SignUp() {
 
     async function onSubmit(data) {
         setError('');
-        // console.log("DATA VAN DE GEBRUIKER", data);
         try {
             toggleLoading(true);
             const response = await axios.post("http://localhost:8080/api/auth/signup", {

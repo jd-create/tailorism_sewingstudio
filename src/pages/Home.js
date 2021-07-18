@@ -5,7 +5,7 @@ import {authContext} from "../contexts/AuthContext";
 
 function Home() {
     const authData = useContext(authContext);
-    // console.log("WHAT IS IN THIS DATA?", authData);
+
     return (
         <>
             <h1>Homepagina</h1>

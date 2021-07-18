@@ -24,7 +24,6 @@ function AuthContextProvider(props) {
     async function getUserData(username, token) {
         setAuthState({user: null, status: "pending"});
         try {
-            // console.log("username and token?", username, token)
             const response = await axios.get(
                 `http://localhost:8080/api/auth/600/user/${username}`,
                 {
@@ -33,13 +32,10 @@ function AuthContextProvider(props) {
                     },
                 }
             );
-            // console.log("Wat is de response van getUserData?", response.data)
-
             setAuthState({user: response.data, status: "done"});
-            // console.log("authstate???", authState)
             history.push('/profile');
         } catch (e) {
-            // console.log("OH O, error getuserdata:", e)
+
         }
     }
 

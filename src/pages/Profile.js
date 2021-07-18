@@ -16,7 +16,7 @@ function Profile() {
     useEffect(() => {
         async function fetchPrivateContent(){
             // toggleLoading(true);
-            // console.log("FETCH DATA IN PROFILE")
+
             try {
                 const token = localStorage.getItem('token')
                 // console.log("TOKEN UIT LOCAL STORAGE:", token)
@@ -27,17 +27,15 @@ function Profile() {
                             },
                     }
                 );
-                // console.log("DO WE GET A RESPONSE:", response)
                 const productDescription = response.data.find((data) => {return data.description ==='Jasverlenging'})
                 setContent(productDescription);
                     }
-                    //onderstaande error krijg ik niet getest, nuttig?
                     catch (e) {}
                 // toggleLoading(false);
                 }
                 fetchPrivateContent();
     }, []);
-        // console.log("WHAT IS CONTENT??:",content)
+
         // toggleLoading(false);
 
     return (
