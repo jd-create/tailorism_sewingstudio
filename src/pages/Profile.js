@@ -7,7 +7,7 @@ import axios from "axios";
 function Profile() {
     const { authState: {user},
     } = useContext(authContext);
-    // console.log("USER STUFF IN PROFILE:", user)
+    console.log("USER STUFF IN PROFILE:", user)
     const [content, setContent]= useState(null);
     const [error, setError]= useState(null);
     //laadtijden implementeren lukt niet; veroorzaakt teveel rerendering
@@ -47,7 +47,7 @@ function Profile() {
                 <h2>Gegevens</h2>
                 {/*{//het vraagteken hieronder houdt een extra check in of de user wel gevuld is (niet null), optional chaining operator}*/}
                 <p>
-                    <strong>Gebruikersnaam:</strong> {user && user.body.username}
+                    <strong>Gebruikersnaam:</strong> {user && user?.body.username}
                 </p>
                 <p>
                     <strong>Email:</strong> {user?.body.email}
