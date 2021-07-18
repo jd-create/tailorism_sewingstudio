@@ -4,8 +4,9 @@ import stof1 from "../assets/vintage1.png";
 import stof2 from "../assets/vintage2.png";
 import stof3 from "../assets/vintage3.png";
 
-function Fabricmarket(){
-    return(
+
+function Fabricmarket() {
+    return (
         <>
             <h2>
                 Stoffenmarkt

@@ -7,4 +7,5 @@ function Logo({image, title}) {
         </div>
     )
 }
+
 export default Logo;

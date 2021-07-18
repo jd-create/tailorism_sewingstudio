@@ -1,10 +1,11 @@
-import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
-import { authContext } from "../contexts/AuthContext";
+import React, {useContext} from 'react';
+import {Link} from 'react-router-dom';
+import {authContext} from "../contexts/AuthContext";
+
 
 function Home() {
     const authData = useContext(authContext);
-    console.log("WHAT IS IN THIS DATA?" ,authData);
+    // console.log("WHAT IS IN THIS DATA?", authData);
     return (
         <>
             <h1>Homepagina</h1>
@@ -14,7 +15,7 @@ function Home() {
                     artikelen, waarmee je zelf aan de slag kunt.</p>
                 <br/>
                 <link/>
-                    <p>Vermaak jezelf op deze site!</p>
+                <p>Vermaak jezelf op deze site!</p>
             </section>
             <section>
                 <p>

@@ -4,18 +4,19 @@ import borduurring from "../assets/borduurring.png"
 import macramegaren from "../assets/macramegaren.png"
 import lint from "../assets/lint.png"
 
-function Articles(){
 
-    return(
+function Articles() {
+
+    return (
         <>
             <h2>
                 Naaiartikelen
             </h2>
             <main>
                 <Product
-                image={borduurring}
-                title="borduurring"
-                description="In verschillende maten verkrijgbaar">
+                    image={borduurring}
+                    title="borduurring"
+                    description="In verschillende maten verkrijgbaar">
                 </Product>
                 <Product
                     image={macramegaren}
@@ -30,8 +31,6 @@ function Articles(){
             </main>
         </>
     )
-
-
 }
 
 export default Articles;

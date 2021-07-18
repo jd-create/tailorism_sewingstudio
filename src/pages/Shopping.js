@@ -1,10 +1,11 @@
-import { Link } from 'react-router-dom';
 import axios from "axios";
 import {useContext, useEffect} from "react";
 import {authContext} from "../contexts/AuthContext";
 
+
 function Shopping() {
-    const { authState: {user},
+    const {
+        authState: {user},
     } = useContext(authContext);
     console.log("USER STUFF IN SHOPPING:", user)
 
@@ -21,11 +22,12 @@ function Shopping() {
                             },
                     }
                 );
-                console.log("Do we have products",response);
-            } catch (e) {}
+                console.log("Do we have products", response);
+            } catch (e) {
+            }
         }
         gettingProducts();
-    },[]);
+    }, []);
     console.log('gelukt?')
     return (
         <>

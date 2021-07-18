@@ -39,10 +39,7 @@ function SignIn() {
     return (
         <>
             <h1>Inloggen</h1>
-
-
             <form onSubmit={handleSubmit(onSubmit)}>
-
                 <label htmlFor="username-field">
                     Gebruikersnaam:
                     <input
